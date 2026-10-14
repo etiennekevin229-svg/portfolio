@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kevin Étienne — Développeur Full-Stack &amp; Ingénieur ERP</title>
+<meta name="description" content="Portfolio de Caïto Kevin Marley Étienne : développeur full-stack junior, ingénieur ERP Odoo 19 et co-fondateur de Proaktif Consulting à Port-au-Prince, Haïti.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Courier New', monospace; background: #050d1a; color: #e0f0ff; overflow-x: hidden; }
+  canvas#bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+  .content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  /* NAV */
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; margin-bottom: 3rem; border-bottom: 1px solid #0a3060; }
+  .logo { font-size: 1.1rem; color: #00d4ff; font-weight: bold; letter-spacing: 2px; }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a { color: #7ab8d4; text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; transition: color 0.3s; cursor: pointer; }
+  .nav-links a:hover { color: #00d4ff; }
+
+  /* HERO */
+  .hero { text-align: center; padding: 3rem 0; }
+  .hero-badge { display: inline-block; background: rgba(0, 212, 255, 0.08); border: 1px solid rgba(0, 212, 255, 0.3); color: #00d4ff; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
+  .hero h1 { font-size: 2.8rem; font-weight: bold; line-height: 1.2; margin-bottom: 0.5rem; font-family: sans-serif; }
+  .hero h1 span { color: #00d4ff; }
+  .hero-sub { font-size: 1rem; color: #5a9ab8; margin: 1rem 0 2rem; font-family: sans-serif; }
+  .typing { font-size: 1rem; color: #00d4ff; min-height: 1.5rem; }
+  .cursor { animation: blink 1s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap; }
+  .btn-primary { background: #00d4ff; color: #050d1a; padding: 0.7rem 1.8rem; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; font-size: 0.9rem; transition: transform 0.2s, box-shadow 0.2s; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(0,212,255,0.4); }
+  .btn-outline { background: transparent; color: #00d4ff; padding: 0.7rem 1.8rem; border-radius: 4px; border: 1px solid #00d4ff; cursor: pointer; font-size: 0.9rem; transition: all 0.2s; }
+  .btn-outline:hover { background: rgba(0,212,255,0.1); }
+
+  /* SECTIONS */
+  section { margin: 4rem 0; }
+  .section-title { font-size: 0.75rem; color: #00d4ff; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, #0a3060, transparent); }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .about-text { font-family: sans-serif; font-size: 0.95rem; line-height: 1.8; color: #a0c8e0; }
+  .about-text p { margin-bottom: 1rem; }
+  .info-cards { display: flex; flex-direction: column; gap: 0.8rem; }
+  .info-card { background: rgba(0, 50, 90, 0.4); border: 1px solid #0a3060; border-left: 3px solid #00d4ff; padding: 0.8rem 1rem; border-radius: 4px; }
+  .info-card .label { font-size: 0.7rem; color: #5a9ab8; letter-spacing: 1px; margin-bottom: 0.3rem; }
+  .info-card .value { font-size: 0.85rem; color: #e0f0ff; font-family: sans-serif; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .skill-card { background: rgba(0, 30, 60, 0.6); border: 1px solid #0a3060; border-radius: 8px; padding: 1.2rem; transition: border-color 0.3s, transform 0.2s; }
+  .skill-card:hover { border-color: #00d4ff; transform: translateY(-3px); }
+  .skill-cat { font-size: 0.7rem; color: #00d4ff; letter-spacing: 2px; margin-bottom: 0.8rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag { background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.2); color: #7ab8d4; padding: 0.25rem 0.6rem; border-radius: 3px; font-size: 0.75rem; }
+
+  /* PROJECT */
+  .project-card { background: rgba(0, 20, 50, 0.8); border: 1px solid #0a3060; border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; transition: border-color 0.3s; }
+  .project-card:hover { border-color: #00d4ff; }
+  .project-header { background: rgba(0, 212, 255, 0.05); border-bottom: 1px solid #0a3060; padding: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+  .project-title { font-size: 1.3rem; font-weight: bold; color: #e0f0ff; font-family: sans-serif; margin-bottom: 0.3rem; }
+  .project-subtitle { font-size: 0.8rem; color: #00d4ff; letter-spacing: 1px; }
+  .status-badge { background: rgba(0, 255, 100, 0.1); border: 1px solid rgba(0,255,100,0.3); color: #00ff64; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.7rem; letter-spacing: 1px; white-space: nowrap; }
+  .status-badge.paused { background: rgba(255, 184, 0, 0.08); border-color: rgba(255,184,0,0.35); color: #ffb800; }
+  .status-badge.alt { background: rgba(0, 212, 255, 0.08); border-color: rgba(0,212,255,0.3); color: #00d4ff; }
+  .feature-list { font-family: sans-serif; color: #a0c8e0; font-size: 0.85rem; line-height: 1.7; padding-left: 1.1rem; }
+  .feature-list li { margin-bottom: 0.3rem; }
+  .feature-list li::marker { color: #00d4ff; }
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; }
+  .gallery figure { margin: 0; cursor: zoom-in; }
+  .gallery img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 6px; border: 1px solid #0a3060; display: block; transition: border-color 0.3s, transform 0.2s; }
+  .gallery figure:hover img { border-color: #00d4ff; transform: translateY(-3px); }
+  .gallery figcaption { font-family: sans-serif; font-size: 0.72rem; color: #5a9ab8; margin-top: 0.4rem; text-align: center; }
+  .gallery-note { font-family: sans-serif; font-size: 0.72rem; color: #2a5878; margin-top: 0.6rem; }
+  .project-body { padding: 1.5rem; }
+  .project-desc { font-family: sans-serif; color: #a0c8e0; font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.5rem; }
+  .project-section { margin-bottom: 1.5rem; }
+  .project-section h4 { font-size: 0.7rem; color: #00d4ff; letter-spacing: 2px; margin-bottom: 0.8rem; }
+  .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tech-pill { background: rgba(0, 212, 255, 0.08); border: 1px solid rgba(0,212,255,0.25); color: #00d4ff; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .metric { background: rgba(0,212,255,0.05); border: 1px solid #0a3060; border-radius: 6px; padding: 0.8rem; text-align: center; }
+  .metric-val { font-size: 1.4rem; font-weight: bold; color: #00d4ff; }
+  .metric-label { font-size: 0.65rem; color: #5a9ab8; margin-top: 0.2rem; font-family: sans-serif; }
+  .accordion { border-top: 1px solid #0a3060; }
+  .accordion-item { border-bottom: 1px solid #0a3060; }
+  .accordion-btn { width: 100%; background: none; border: none; color: #a0c8e0; padding: 1rem 0; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; font-family: sans-serif; }
+  .accordion-btn:hover { color: #00d4ff; }
+  .accordion-arrow { color: #00d4ff; font-size: 1rem; transition: transform 0.3s; }
+  .accordion-arrow.open { transform: rotate(180deg); }
+  .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .accordion-content.open { max-height: 500px; }
+  .accordion-body { font-family: sans-serif; font-size: 0.85rem; color: #7ab8d4; line-height: 1.7; padding-bottom: 1rem; }
+
+
+  /* CERTIFICATIONS */
+  .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .cert-card { background: rgba(0, 30, 60, 0.6); border: 1px solid #0a3060; border-radius: 8px; padding: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; transition: border-color 0.3s, transform 0.2s; }
+  .cert-card:hover { border-color: #00d4ff; transform: translateY(-3px); }
+  .cert-top { display: flex; align-items: center; gap: 0.8rem; }
+  .cert-icon { flex-shrink: 0; width: 40px; height: 40px; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #00d4ff; font-weight: bold; font-size: 0.8rem; }
+  .cert-issuer { font-size: 0.7rem; color: #00d4ff; letter-spacing: 2px; text-transform: uppercase; }
+  .cert-date { font-size: 0.7rem; color: #5a9ab8; margin-top: 0.2rem; }
+  .cert-name { font-family: sans-serif; font-size: 0.95rem; font-weight: bold; color: #e0f0ff; line-height: 1.4; }
+  .cert-note { font-family: sans-serif; font-size: 0.78rem; color: #7ab8d4; line-height: 1.5; }
+  .cert-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: auto; }
+  .cert-btn { font-family: 'Courier New', monospace; font-size: 0.75rem; padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+  .cert-btn.verify { background: #00d4ff; color: #050d1a; border: 1px solid #00d4ff; font-weight: bold; }
+  .cert-btn.verify:hover { box-shadow: 0 0 14px rgba(0,212,255,0.4); }
+  .cert-btn.view { background: transparent; color: #00d4ff; border: 1px solid rgba(0,212,255,0.4); }
+  .cert-btn.view:hover { background: rgba(0,212,255,0.1); }
+  .cert-tag { align-self: flex-start; font-size: 0.65rem; letter-spacing: 1px; color: #7ab8d4; border: 1px solid #0a3060; border-radius: 20px; padding: 0.2rem 0.6rem; }
+
+  /* LIGHTBOX */
+  .lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(2, 8, 18, 0.92); display: none; align-items: center; justify-content: center; padding: 1.5rem; cursor: zoom-out; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 100%; max-height: 88vh; border-radius: 6px; border: 1px solid #0a3060; box-shadow: 0 0 40px rgba(0,212,255,0.15); }
+  .lightbox-close { position: absolute; top: 1rem; right: 1.2rem; background: none; border: 1px solid #0a3060; color: #00d4ff; font-size: 1.2rem; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .contact-card { background: rgba(0,30,60,0.6); border: 1px solid #0a3060; border-radius: 8px; padding: 1.2rem; display: flex; align-items: center; gap: 1rem; text-decoration: none; color: inherit; transition: border-color 0.3s, transform 0.2s; cursor: pointer; }
+  .contact-card:hover { border-color: #00d4ff; transform: translateY(-2px); }
+  .contact-icon { width: 40px; height: 40px; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+  .contact-info .label { font-size: 0.7rem; color: #5a9ab8; letter-spacing: 1px; margin-bottom: 0.2rem; }
+  .contact-info .value { font-size: 0.85rem; color: #e0f0ff; font-family: sans-serif; }
+
+  .contact-intro { font-family: sans-serif; color: #a0c8e0; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+  .contact-action { font-size: 0.7rem; color: #00d4ff; margin-top: 0.3rem; letter-spacing: 1px; }
+  .contact-card:focus-visible { outline: 2px solid #00d4ff; outline-offset: 2px; }
+
+  /* TOAST */
+  .toast { position: fixed; left: 50%; bottom: 1.5rem; transform: translate(-50%, calc(100% + 3rem)); visibility: hidden; z-index: 200; width: min(440px, calc(100% - 2rem)); background: rgba(0, 20, 50, 0.97); border: 1px solid #00d4ff; border-radius: 8px; padding: 1rem 2.5rem 1rem 1.2rem; box-shadow: 0 0 30px rgba(0,212,255,0.2); transition: transform 0.35s ease; }
+  .toast.show { transform: translate(-50%, 0); visibility: visible; }
+  .toast-title { font-size: 0.8rem; color: #00d4ff; letter-spacing: 1px; margin-bottom: 0.4rem; }
+  .toast-msg { font-family: sans-serif; font-size: 0.85rem; color: #e0f0ff; line-height: 1.6; }
+  .toast-close { position: absolute; top: 0.5rem; right: 0.6rem; background: none; border: none; color: #5a9ab8; font-size: 1rem; cursor: pointer; }
+  .toast-close:hover { color: #00d4ff; }
+
+
+  /* SEBASTIAN — CHAT */
+  .seb-launcher { position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 150; display: flex; align-items: center; gap: 0.6rem; background: #00d4ff; color: #050d1a; border: none; border-radius: 30px; padding: 0.8rem 1.2rem; font-family: 'Courier New', monospace; font-weight: bold; font-size: 0.85rem; cursor: pointer; box-shadow: 0 0 25px rgba(0,212,255,0.35); transition: transform 0.2s, box-shadow 0.2s; }
+  .seb-launcher:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(0,212,255,0.55); }
+  .seb-launcher .seb-dot { width: 8px; height: 8px; border-radius: 50%; background: #050d1a; animation: blink 1.6s infinite; }
+  .seb-launcher.hidden { display: none; }
+  .seb-panel { position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 160; width: 380px; height: min(580px, calc(100vh - 3rem)); display: none; flex-direction: column; background: #050d1a; border: 1px solid #00d4ff; border-radius: 14px; box-shadow: 0 0 40px rgba(0,212,255,0.2); overflow: hidden; }
+  .seb-panel.open { display: flex; }
+  .seb-head { display: flex; align-items: center; gap: 0.8rem; padding: 0.9rem 1rem; border-bottom: 1px solid #0a3060; background: rgba(0,212,255,0.05); }
+  .seb-avatar { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(0,212,255,0.4); display: flex; align-items: center; justify-content: center; color: #00d4ff; font-weight: bold; font-size: 0.8rem; flex-shrink: 0; }
+  .seb-title { font-size: 0.9rem; color: #e0f0ff; font-weight: bold; }
+  .seb-sub { font-size: 0.68rem; color: #5a9ab8; letter-spacing: 1px; margin-top: 0.1rem; }
+  .seb-close { margin-left: auto; background: none; border: 1px solid #0a3060; color: #00d4ff; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 0.9rem; }
+  .seb-close:hover { border-color: #00d4ff; }
+  .seb-msgs { flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 0.7rem; }
+  .seb-msg { max-width: 85%; padding: 0.65rem 0.9rem; border-radius: 12px; font-family: sans-serif; font-size: 0.86rem; line-height: 1.55; word-wrap: break-word; }
+  .seb-msg.bot { align-self: flex-start; background: rgba(0, 50, 90, 0.5); border: 1px solid #0a3060; color: #e0f0ff; border-bottom-left-radius: 4px; }
+  .seb-msg.user { align-self: flex-end; background: #00d4ff; color: #050d1a; border-bottom-right-radius: 4px; }
+  .seb-msg.bot strong { color: #00d4ff; }
+  .seb-msg.bot ul { padding-left: 1.1rem; margin: 0.3rem 0; }
+  .seb-msg.bot a { color: #00d4ff; }
+  .seb-msg.error { border-color: rgba(255,184,0,0.4); color: #ffd36b; }
+  .seb-typing { display: inline-flex; gap: 4px; }
+  .seb-typing span { width: 6px; height: 6px; border-radius: 50%; background: #00d4ff; animation: sebBounce 1s infinite; }
+  .seb-typing span:nth-child(2) { animation-delay: 0.15s; }
+  .seb-typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes sebBounce { 0%,80%,100% { opacity: 0.25; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
+  .seb-suggest { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0 1rem 0.6rem; }
+  .seb-chip { background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.3); color: #7ab8d4; border-radius: 20px; padding: 0.35rem 0.75rem; font-size: 0.74rem; font-family: sans-serif; cursor: pointer; }
+  .seb-chip:hover { color: #00d4ff; border-color: #00d4ff; }
+  .seb-form { display: flex; gap: 0.5rem; padding: 0.8rem; border-top: 1px solid #0a3060; }
+  .seb-input { flex: 1; background: rgba(0,30,60,0.6); border: 1px solid #0a3060; border-radius: 8px; color: #e0f0ff; padding: 0.65rem 0.8rem; font-family: sans-serif; font-size: 0.86rem; resize: none; max-height: 110px; }
+  .seb-input:focus { outline: none; border-color: #00d4ff; }
+  .seb-send { background: #00d4ff; color: #050d1a; border: none; border-radius: 8px; width: 44px; cursor: pointer; font-size: 1rem; font-weight: bold; }
+  .seb-send:disabled { opacity: 0.4; cursor: not-allowed; }
+  .seb-note { font-family: sans-serif; font-size: 0.64rem; color: #2a5878; padding: 0 0.9rem 0.6rem; text-align: center; }
+  @media (max-width: 600px) {
+    .seb-panel { right: 0; bottom: 0; width: 100%; height: 100%; border-radius: 0; border: none; }
+    .seb-launcher { right: 1rem; bottom: 1rem; }
+  }
+
+  /* FOOTER */
+  footer { text-align: center; padding: 2rem 0; border-top: 1px solid #0a3060; color: #2a5878; font-size: 0.75rem; font-family: sans-serif; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.8rem; }
+    nav { flex-direction: column; gap: 0.8rem; }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 0.6rem 1rem; }
+    .about-grid, .contact-grid, .cert-grid { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="lightbox" id="lightbox" onclick="closeCert()">
+  <button class="lightbox-close" aria-label="Fermer">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<div class="content">
+  <nav>
+    <div class="logo">&lt;KEV /&gt;</div>
+    <div class="nav-links">
+      <a onclick="scroll2('about')">À propos</a>
+      <a onclick="scroll2('skills')">Compétences</a>
+      <a onclick="scroll2('certifications')">Certifications</a>
+      <a onclick="scroll2('projects')">Projets</a>
+      <a onclick="scroll2('contact')">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">▸ DISPONIBLE POUR OPPORTUNITÉS</div>
+    <h1>Caïto Kevin<br><span>Marley Étienne</span></h1>
+    <div class="hero-sub">Développeur Full-Stack Junior &amp; Ingénieur ERP</div>
+    <div class="typing" id="typing"></div>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="scroll2('projects')">Voir mes projets</button>
+      <button class="btn-outline" onclick="scroll2('contact')">Me contacter</button>
+      <button class="btn-outline" onclick="sebOpen()">💬 Discuter avec Sebastian</button>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-title">01 &mdash; À propos</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Développeur Full-Stack junior passionné par la construction de solutions technologiques concrètes. Je conçois des applications web modernes et déploie des systèmes ERP pour aider les entreprises à se digitaliser.</p>
+        <p>Actuellement en 3ème année à l'ESIH, je combine ma formation académique avec une expérience pratique en infrastructure cloud, automatisation et déploiement de systèmes ERP en production.</p>
+        <p>Co-fondateur de <strong style="color:#00d4ff">Proaktif Consulting</strong> (anciennement ScaleUp Services), une startup Tech-as-a-Service qui démocratise l'accès aux outils numériques pour les PME haïtiennes.</p>
+      </div>
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="label">FORMATION</div>
+          <div class="value">Licence en Informatique — 3ème année</div>
+        </div>
+        <div class="info-card">
+          <div class="label">ÉCOLE</div>
+          <div class="value">ESIH — École Supérieure d'Infotronique d'Haïti</div>
+        </div>
+        <div class="info-card">
+          <div class="label">SPÉCIALITÉ</div>
+          <div class="value">Full-Stack Dev · ERP · Infrastructure Cloud</div>
+        </div>
+        <div class="info-card">
+          <div class="label">LANGUES</div>
+          <div class="value">Créole (Natif) · Français (Natif) · Anglais (en progression)</div>
+        </div>
+        <div class="info-card">
+          <div class="label">LOCALISATION</div>
+          <div class="value">Port-au-Prince, Haïti</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-title">02 &mdash; Compétences</div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-cat">FRONTEND</div>
+        <div class="skill-tags">
+          <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">React.js</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">BACKEND</div>
+        <div class="skill-tags">
+          <span class="tag">Node.js</span><span class="tag">Python</span><span class="tag">REST API</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">BASE DE DONNÉES</div>
+        <div class="skill-tags">
+          <span class="tag">PostgreSQL</span><span class="tag">SQL Server</span><span class="tag">Merise</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">DEVOPS & INFRA</div>
+        <div class="skill-tags">
+          <span class="tag">Docker</span><span class="tag">Linux</span><span class="tag">Git</span><span class="tag">Traefik</span><span class="tag">VPS</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">ERP</div>
+        <div class="skill-tags">
+          <span class="tag">Odoo 19</span><span class="tag">Multi-tenant</span><span class="tag">POS</span><span class="tag">Modules OCA</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">IA</div>
+        <div class="skill-tags">
+          <span class="tag">Gemini API</span><span class="tag">Groq</span><span class="tag">RAG</span><span class="tag">ChromaDB</span><span class="tag">Streamlit</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">DESIGN</div>
+        <div class="skill-tags">
+          <span class="tag">Identité visuelle</span><span class="tag">Branding</span><span class="tag">IA générative</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="section-title">03 &mdash; Certifications</div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">G</div>
+          <div>
+            <div class="cert-issuer">Google · Coursera</div>
+            <div class="cert-date">19 juillet 2024</div>
+          </div>
+        </div>
+        <div class="cert-name">Google IT Support</div>
+        <div class="cert-note">Certificat professionnel en 5 cours : support technique, réseaux, systèmes d'exploitation, administration système et sécurité informatique.</div>
+        <div class="cert-actions">
+          <a class="cert-btn verify" href="https://coursera.org/verify/professional-cert/3GAF74SRS9XA" target="_blank" rel="noopener">Vérifier ↗</a>
+          <button class="cert-btn view" onclick="openCert('certificats/google-it-support.jpg', 'Google IT Support')">Voir le certificat</button>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">SW</div>
+          <div>
+            <div class="cert-issuer">Starweaver · Coursera</div>
+            <div class="cert-date">2 mars 2026</div>
+          </div>
+        </div>
+        <div class="cert-name">Introduction to Cybersecurity Fundamentals</div>
+        <div class="cert-note">Principes fondamentaux de la cybersécurité : menaces, vulnérabilités et bonnes pratiques de protection.</div>
+        <div class="cert-actions">
+          <a class="cert-btn verify" href="https://coursera.org/verify/507R50YIVPB3" target="_blank" rel="noopener">Vérifier ↗</a>
+          <button class="cert-btn view" onclick="openCert('certificats/cybersecurity-fundamentals.jpg', 'Introduction to Cybersecurity Fundamentals')">Voir le certificat</button>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">ED</div>
+          <div>
+            <div class="cert-issuer">Edureka · Coursera</div>
+            <div class="cert-date">21 mars 2026</div>
+          </div>
+        </div>
+        <div class="cert-name">Cybersecurity and Network Defense Fundamentals</div>
+        <div class="cert-note">Sécurité des réseaux et techniques de défense contre les attaques.</div>
+        <div class="cert-actions">
+          <a class="cert-btn verify" href="https://coursera.org/verify/5UTU1RKSML3N" target="_blank" rel="noopener">Vérifier ↗</a>
+          <button class="cert-btn view" onclick="openCert('certificats/network-defense.jpg', 'Cybersecurity and Network Defense Fundamentals')">Voir le certificat</button>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-top">
+          <div class="cert-icon">WT</div>
+          <div>
+            <div class="cert-issuer">WikiTech Haïti</div>
+            <div class="cert-date">2025</div>
+          </div>
+        </div>
+        <div class="cert-name">Formation Digitale 2025</div>
+        <span class="cert-tag">CERTIFICAT DE PARTICIPATION</span>
+        <div class="cert-note">Formation au développement des compétences numériques.</div>
+        <div class="cert-actions">
+          <button class="cert-btn view" onclick="openCert('certificats/formation-digitale-2025.jpg', 'Formation Digitale 2025')">Voir le certificat</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-title">04 &mdash; Projets</div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <div class="project-title">Proaktif Consulting</div>
+          <div class="project-subtitle">CO-FONDATEUR · TECH-AS-A-SERVICE · DEPUIS JUIN 2026</div>
+        </div>
+        <div class="status-badge">▸ EN PRODUCTION</div>
+      </div>
+      <div class="project-body">
+        <div class="project-desc">
+          Startup co-fondée proposant des solutions ERP (Odoo 19) aux PME haïtiennes sous forme d'abonnement mensuel abordable. L'objectif : démocratiser la digitalisation des commerces haïtiens sans barrière financière d'entrée.
+        </div>
+
+        <div class="project-section">
+          <h4>MÉTRIQUES</h4>
+          <div class="metrics-grid">
+            <div class="metric">
+              <div class="metric-val">Odoo 19</div>
+              <div class="metric-label">ERP Open Source</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">7</div>
+              <div class="metric-label">Packs métiers</div>
+            </div>
+            <div class="metric">
+              <div class="metric-val">Auto</div>
+              <div class="metric-label">Sauvegardes &amp; SSL</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <h4>STACK TECHNIQUE</h4>
+          <div class="tech-stack">
+            <span class="tech-pill">Odoo 19</span>
+            <span class="tech-pill">Docker</span>
+            <span class="tech-pill">PostgreSQL 15</span>
+            <span class="tech-pill">Traefik v3</span>
+            <span class="tech-pill">Let's Encrypt SSL</span>
+            <span class="tech-pill">Hetzner VPS</span>
+            <span class="tech-pill">Cloudflare DNS</span>
+            <span class="tech-pill">Bash Scripting</span>
+            <span class="tech-pill">Git / GitHub</span>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAcc(this)">
+              Pourquoi Odoo ?
+              <span class="accordion-arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                Odoo est un ERP open source complet couvrant la gestion des ventes, stocks, facturation, e-commerce et point de vente. Contrairement aux solutions propriétaires coûtant des milliers de dollars en licences, Odoo Community est 100% gratuit. Cela nous permet de proposer une solution professionnelle complète pour un abonnement mensuel accessible aux commerces haïtiens.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAcc(this)">
+              Le problème résolu
+              <span class="accordion-arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                Les PME haïtiennes ont besoin de se digitaliser pour croître mais les solutions traditionnelles exigent des investissements de plusieurs milliers de dollars. Proaktif Consulting élimine cette barrière en proposant une infrastructure numérique complète (caisse POS, gestion stocks, site e-commerce) pour le prix d'un abonnement mensuel — sans capital initial requis.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAcc(this)">
+              Les packs métiers
+              <span class="accordion-arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                <strong style="color:#e0f0ff">Commerce, Restaurant, E-commerce, Site vitrine</strong> : basés sur les modules natifs d'Odoo (point de vente, stock, boutique en ligne).<br>
+                <strong style="color:#e0f0ff">École</strong> : gestion scolaire avec bulletins au format haïtien (développé par mon associé).<br>
+                <strong style="color:#e0f0ff">Clinique / Hôpital</strong> : module que j'ai développé de zéro (voir le projet ci-dessous).<br>
+                <strong style="color:#e0f0ff">Barber Shop</strong> : pensé pour le fonctionnement local, avec file d'attente sur place et vente de boissons en plus des coupes.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAcc(this)">
+              Mon rôle technique
+              <span class="accordion-arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                Déploiement et administration de l'infrastructure VPS multi-tenant sur Hetzner. Configuration de Docker Compose orchestrant Odoo, PostgreSQL et Traefik avec SSL wildcard automatique. Développement de scripts Bash automatisant l'onboarding, la suspension et la sauvegarde des clients. Mise en place du workflow Git avec branches, Pull Requests et code review.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-btn" onclick="toggleAcc(this)">
+              Architecture & sécurité
+              <span class="accordion-arrow">▼</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                Architecture multi-tenant : une instance Odoo et une instance PostgreSQL servent plusieurs clients, chacun avec sa propre base de données isolée et son sous-domaine sécurisé en HTTPS. Serveur durci (pare-feu, protection contre les tentatives d'intrusion, accès SSH par clé uniquement) et sauvegardes automatiques chaque nuit.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <div class="project-title">Module Clinique / Hôpital</div>
+          <div class="project-subtitle">ODOO 19 · DÉVELOPPÉ DE ZÉRO</div>
+        </div>
+        <div class="status-badge alt">▸ MODULE CUSTOM</div>
+      </div>
+      <div class="project-body">
+        <div class="project-desc">
+          Module Odoo 19 complet pour la gestion d'un établissement de santé, intégré à l'offre de Proaktif Consulting. Je l'ai développé moi-même de zéro, car les modules communautaires existants n'étaient pas encore stables sur Odoo 19.
+        </div>
+        <div class="project-section">
+          <h4>FONCTIONNALITÉS</h4>
+          <ul class="feature-list">
+            <li>Dossiers patients et médecins</li>
+            <li>Rendez-vous et consultations</li>
+            <li>Ordonnances et laboratoire</li>
+            <li>Hospitalisation et gestion des lits</li>
+            <li>Rapports</li>
+          </ul>
+        </div>
+        <div class="project-section">
+          <h4>STACK TECHNIQUE</h4>
+          <div class="tech-stack">
+            <span class="tech-pill">Odoo 19</span>
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">PostgreSQL</span>
+            <span class="tech-pill">XML (vues Odoo)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <div class="project-title">Sebastian</div>
+          <div class="project-subtitle">ASSISTANT IA PERSONNEL</div>
+        </div>
+        <div class="status-badge">▸ EN LIGNE SUR CE SITE</div>
+      </div>
+      <div class="project-body">
+        <div class="project-desc">
+          Assistant IA inspiré de Jarvis, qui retient ce que je lui apprends, cherche dans mes documents, gère ma todo-list et fait des recherches sur le web. Défi : zéro budget, tout est construit sur des services gratuits, avec bascule automatique vers un second modèle si le premier est indisponible.
+        </div>
+        <div class="project-section">
+          <h4>POINTS CLÉS</h4>
+          <ul class="feature-list">
+            <li>Recherche dans des documents personnels (RAG) avec découpage par sections</li>
+            <li>Mémoire persistante entre les sessions</li>
+            <li>Appels d'outils (web, mémoire, tâches)</li>
+            <li>Version publique intégrée à ce portfolio : une API Python serverless sur Vercel, sans outils ni accès aux données privées</li>
+            <li>Chaîne de secours gratuite : Gemini → Gemini Flash-Lite → GitHub Models</li>
+          </ul>
+        </div>
+        <div class="project-section">
+          <h4>STACK TECHNIQUE</h4>
+          <div class="tech-stack">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">Streamlit</span>
+            <span class="tech-pill">Google Gemini</span>
+            <span class="tech-pill">GitHub Models</span>
+            <span class="tech-pill">ChromaDB</span>
+            <span class="tech-pill">Vercel Functions</span>
+            <span class="tech-pill">DuckDuckGo</span>
+          </div>
+        </div>
+        <button class="btn-primary" style="margin-top:0.5rem" onclick="sebOpen()">💬 Essayer Sebastian</button>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <div class="project-title">Gestion d'objets perdus</div>
+          <div class="project-subtitle">APPLICATION WEB</div>
+        </div>
+        <div class="status-badge paused">▸ PROJET EN SUSPENS</div>
+      </div>
+      <div class="project-body">
+        <div class="project-desc">
+          Application web pour déclarer et retrouver des objets perdus, avec un parcours d'authentification sécurisé et une interface pensée pour le mobile. Le développement est en pause : les fonctionnalités ci-dessous sont déjà réalisées.
+        </div>
+        <div class="project-section">
+          <h4>DÉJÀ RÉALISÉ</h4>
+          <ul class="feature-list">
+            <li>Authentification JWT avec vérification par code OTP</li>
+            <li>Tableau de bord utilisateur</li>
+            <li>Navigation mobile</li>
+            <li>Communication avec une API via Axios et intercepteurs</li>
+          </ul>
+        </div>
+        <div class="project-section">
+          <h4>STACK TECHNIQUE</h4>
+          <div class="tech-stack">
+            <span class="tech-pill">React</span>
+            <span class="tech-pill">Vite</span>
+            <span class="tech-pill">Tailwind CSS</span>
+            <span class="tech-pill">Axios</span>
+            <span class="tech-pill">JWT</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div>
+          <div class="project-title">Phenix Entreprise</div>
+          <div class="project-subtitle">BRANDING · CLIENT RÉEL</div>
+        </div>
+        <div class="status-badge alt">▸ LIVRÉ</div>
+      </div>
+      <div class="project-body">
+        <div class="project-desc">
+          Identité visuelle pour une entreprise haïtienne multi-activités : badges d'employés et étiquettes de produits, reliés par l'emblème du phénix décliné sur chaque support.
+        </div>
+        <div class="project-section">
+          <h4>RÉALISATIONS</h4>
+          <div class="gallery">
+            <figure onclick="openCert('realisations/phenix-rhum.jpg', 'Étiquette Phenix Rhum')">
+              <img src="realisations/phenix-rhum.jpg" alt="Étiquette Phenix Rhum" loading="lazy">
+              <figcaption>Étiquette Phenix Rhum</figcaption>
+            </figure>
+            <figure onclick="openCert('realisations/julia-manba.jpg', 'Étiquette Julia Manba')">
+              <img src="realisations/julia-manba.jpg" alt="Étiquette Julia Manba" loading="lazy">
+              <figcaption>Étiquette Julia Manba</figcaption>
+            </figure>
+            <figure onclick="openCert('realisations/phenix-badge-directrice.jpg', 'Badge Directrice Générale')">
+              <img src="realisations/phenix-badge-directrice.jpg" alt="Badge Directrice Générale" loading="lazy">
+              <figcaption>Badge Directrice Générale</figcaption>
+            </figure>
+            <figure onclick="openCert('realisations/phenix-badge-pdg.jpg', 'Badge PDG')">
+              <img src="realisations/phenix-badge-pdg.jpg" alt="Badge PDG" loading="lazy">
+              <figcaption>Badge PDG</figcaption>
+            </figure>
+          </div>
+          <div class="gallery-note">Photos, noms et numéros d'identification floutés sur les badges pour protéger la vie privée des employés.</div>
+        </div>
+        <div class="project-section">
+          <h4>LIVRABLES</h4>
+          <ul class="feature-list">
+            <li>Badges d'employés (Directrice Générale, PDG)</li>
+            <li>Étiquette « Phenix Rhum » (cocktail traditionnel)</li>
+            <li>Étiquette « Julia Manba » (beurre d'arachide 100 % naturel)</li>
+            <li>Déclinaison de l'emblème Phenix sur tous les supports</li>
+          </ul>
+        </div>
+        <div class="project-section">
+          <h4>STACK TECHNIQUE</h4>
+          <div class="tech-stack">
+            <span class="tech-pill">Identité visuelle</span>
+            <span class="tech-pill">IA générative</span>
+            <span class="tech-pill">Retouche & composition</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-title">05 &mdash; Contact</div>
+    <p class="contact-intro">Un stage, une mission, un projet Odoo ou simplement une question ? Choisissez le moyen qui vous convient, je serai ravi d'échanger avec vous.</p>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:etiennekevin229@gmail.com?subject=Contact%20depuis%20votre%20portfolio&body=Bonjour%20Kevin%2C%0A%0AJe%20vous%20contacte%20au%20sujet%20de%20%3A%20%0A%0ACordialement%2C%0A" onclick="contactMsg('email')">
+        <div class="contact-icon">✉</div>
+        <div class="contact-info">
+          <div class="label">EMAIL</div>
+          <div class="value">etiennekevin229@gmail.com</div>
+          <div class="contact-action">Écrire un email ↗</div>
+        </div>
+      </a>
+      <a class="contact-card" href="https://wa.me/50941557389?text=Bonjour%20Kevin%2C%20je%20viens%20de%20visiter%20votre%20portfolio%20et%20je%20souhaiterais%20%C3%A9changer%20avec%20vous%20au%20sujet%20de%20%3A%20" target="_blank" rel="noopener" onclick="contactMsg('whatsapp')">
+        <div class="contact-icon">💬</div>
+        <div class="contact-info">
+          <div class="label">WHATSAPP</div>
+          <div class="value">+509 41 55 73 89</div>
+          <div class="contact-action">Envoyer un message ↗</div>
+        </div>
+      </a>
+      <a class="contact-card" href="tel:+50941557389" onclick="contactMsg('appel')">
+        <div class="contact-icon">📞</div>
+        <div class="contact-info">
+          <div class="label">APPEL</div>
+          <div class="value">+509 41 55 73 89</div>
+          <div class="contact-action">Appeler ↗</div>
+        </div>
+      </a>
+      <a class="contact-card" href="https://github.com/etiennekevin229-svg" target="_blank" rel="noopener" onclick="contactMsg('github')">
+        <div class="contact-icon">&lt;/&gt;</div>
+        <div class="contact-info">
+          <div class="label">GITHUB</div>
+          <div class="value">etiennekevin229-svg</div>
+          <div class="contact-action">Voir mon code ↗</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    &lt; Caïto Kevin Marley Étienne · Full-Stack Developer · © 2026 /&gt;
+  </footer>
+</div>
+
+<button class="seb-launcher" id="seb-launcher" onclick="sebOpen()" aria-label="Discuter avec Sebastian, l'assistant IA de Kevin">
+  <span class="seb-dot"></span> Discuter avec Sebastian
+</button>
+<div class="seb-panel" id="seb-panel" role="dialog" aria-label="Sebastian, assistant IA de Kevin" aria-modal="false">
+  <div class="seb-head">
+    <div class="seb-avatar">AI</div>
+    <div>
+      <div class="seb-title">Sebastian</div>
+      <div class="seb-sub">ASSISTANT IA DE KEVIN</div>
+    </div>
+    <button class="seb-close" onclick="sebClose()" aria-label="Fermer">✕</button>
+  </div>
+  <div class="seb-msgs" id="seb-msgs" aria-live="polite"></div>
+  <div class="seb-suggest" id="seb-suggest"></div>
+  <form class="seb-form" id="seb-form">
+    <textarea class="seb-input" id="seb-input" rows="1" maxlength="1000" placeholder="Pose ta question sur Kevin…" aria-label="Ton message"></textarea>
+    <button class="seb-send" id="seb-send" type="submit" aria-label="Envoyer">➤</button>
+  </form>
+  <div class="seb-note">Réponses générées par IA (Google Gemini, GitHub Models). Ne partage pas d'informations sensibles.</div>
+</div>
+
+<script>
+function scroll2(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+function openCert(src, alt) {
+  const img = document.getElementById('lightbox-img');
+  img.src = src; img.alt = alt;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeCert() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCert(); });
+
+function toggleAcc(btn) {
+  const content = btn.nextElementSibling;
+  const arrow = btn.querySelector('.accordion-arrow');
+  const isOpen = content.classList.contains('open');
+  document.querySelectorAll('.accordion-content.open').forEach(c => c.classList.remove('open'));
+  document.querySelectorAll('.accordion-arrow.open').forEach(a => a.classList.remove('open'));
+  if (!isOpen) { content.classList.add('open'); arrow.classList.add('open'); }
+}
+
+// CONTACT : petit message pour le visiteur
+const CONTACT_MESSAGES = {
+  email: {
+    title: '✉ MERCI POUR VOTRE MESSAGE',
+    msg: "Votre messagerie va s'ouvrir avec un message prêt à compléter. Je vous répondrai dès que possible. Si rien ne s'ouvre, mon adresse a été copiée : etiennekevin229@gmail.com",
+    copy: 'etiennekevin229@gmail.com'
+  },
+  whatsapp: {
+    title: '💬 À TOUT DE SUITE SUR WHATSAPP',
+    msg: "WhatsApp va s'ouvrir avec un message prêt à envoyer. N'hésitez pas à me présenter votre projet ou votre offre en quelques mots."
+  },
+  appel: {
+    title: '📞 MERCI DE VOTRE APPEL',
+    msg: "Si je ne décroche pas, laissez-moi un message ou écrivez-moi sur WhatsApp : je vous rappellerai rapidement. Mon numéro a été copié : +509 41 55 73 89",
+    copy: '+509 41 55 73 89'
+  },
+  github: {
+    title: '</> BONNE VISITE',
+    msg: "Mon profil GitHub s'ouvre dans un nouvel onglet. Vous y trouverez mes projets et mon code."
+  }
+};
+let toastTimer;
+function contactMsg(key) {
+  const m = CONTACT_MESSAGES[key];
+  if (!m) return;
+  document.getElementById('toast-title').textContent = m.title;
+  document.getElementById('toast-msg').textContent = m.msg;
+  if (m.copy && navigator.clipboard) navigator.clipboard.writeText(m.copy).catch(() => {});
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(hideToast, 9000);
+}
+function hideToast() {
+  document.getElementById('toast').classList.remove('show');
+}
+
+// SEBASTIAN — CHAT (appelle /api/chat, fonction Python sur Vercel)
+const SEB_API = '/api/chat';
+const SEB_MAX_QUESTIONS = 20;
+const SEB_SUGGESTIONS = ["Quel est le parcours de Kevin ?", "Quels projets a-t-il réalisés ?", "Quelles sont ses compétences ?", "Is Kevin open to internships?"];
+const SEB_WELCOME = "Bonjour 👋 Je suis **Sebastian**, l'assistant IA créé par Kevin. Pose-moi tes questions sur son parcours, ses compétences ou ses projets. *I also speak English and Kreyòl.*";
+let sebHistory = [];
+let sebBusy = false;
+try { sebHistory = JSON.parse(sessionStorage.getItem('sebHistory') || '[]'); } catch (e) { sebHistory = []; }
+
+function sebSave() { try { sessionStorage.setItem('sebHistory', JSON.stringify(sebHistory.slice(-40))); } catch (e) {} }
+
+function sebEscape(t) { return t.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function sebFormat(text) {
+  // Mise en forme minimale et sûre : on échappe tout, puis gras, italique, liens, listes.
+  let html = sebEscape(text)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[^*])\*(?!\s)(.+?)\*(?!\*)/g, '$1<em>$2</em>')
+    .replace(/(https?:\/\/[^\s<)]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+  const lines = html.split('\n'); let out = ''; let inList = false;
+  for (const line of lines) {
+    const m = line.match(/^\s*(?:[-•]|\d+\.)\s+(.*)/);
+    if (m) { if (!inList) { out += '<ul>'; inList = true; } out += '<li>' + m[1] + '</li>'; }
+    else { if (inList) { out += '</ul>'; inList = false; } out += (line.trim() ? line + '<br>' : '<br>'); }
+  }
+  if (inList) out += '</ul>';
+  return out.replace(/(<br>)+$/, '');
+}
+
+function sebAdd(role, text, extraClass) {
+  const div = document.createElement('div');
+  div.className = 'seb-msg ' + (role === 'user' ? 'user' : 'bot') + (extraClass ? ' ' + extraClass : '');
+  if (role === 'user') div.textContent = text; else div.innerHTML = sebFormat(text);
+  const box = document.getElementById('seb-msgs');
+  box.appendChild(div); box.scrollTop = box.scrollHeight;
+  return div;
+}
+
+function sebRender() {
+  const box = document.getElementById('seb-msgs'); box.innerHTML = '';
+  sebAdd('assistant', SEB_WELCOME);
+  sebHistory.forEach(m => sebAdd(m.role, m.text, m.error ? 'error' : ''));
+  const sug = document.getElementById('seb-suggest'); sug.innerHTML = '';
+  if (!sebHistory.length) SEB_SUGGESTIONS.forEach(q => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'seb-chip'; b.textContent = q;
+    b.onclick = () => sebSend(q); sug.appendChild(b);
+  });
+}
+
+function sebOpen() {
+  document.getElementById('seb-panel').classList.add('open');
+  document.getElementById('seb-launcher').classList.add('hidden');
+  sebRender();
+  setTimeout(() => document.getElementById('seb-input').focus(), 50);
+}
+function sebClose() {
+  document.getElementById('seb-panel').classList.remove('open');
+  document.getElementById('seb-launcher').classList.remove('hidden');
+}
+
+async function sebSend(text) {
+  text = (text || '').trim();
+  if (!text || sebBusy) return;
+  const asked = sebHistory.filter(m => m.role === 'user').length;
+  if (asked >= SEB_MAX_QUESTIONS) {
+    sebAdd('assistant', "Tu as atteint la limite de questions pour cette visite. Pour aller plus loin, contacte Kevin via la section **Contact** 🙂");
+    return;
+  }
+  document.getElementById('seb-suggest').innerHTML = '';
+  sebAdd('user', text);
+  sebHistory.push({ role: 'user', text });
+  sebBusy = true; document.getElementById('seb-send').disabled = true;
+  const typing = sebAdd('assistant', '');
+  typing.innerHTML = '<span class="seb-typing"><span></span><span></span><span></span></span>';
+
+  // On n'envoie que les échanges réussis (les messages d'erreur ne vont pas au modèle)
+  const payload = sebHistory.filter(m => !m.error).slice(-11).map(m => ({ role: m.role, text: m.text }));
+  let reply, isError = false;
+  try {
+    const res = await fetch(SEB_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: payload }) });
+    const data = await res.json().catch(() => ({}));
+    reply = data.reply || "Je n'ai pas réussi à répondre. Réessaie dans un instant.";
+    isError = !res.ok;
+  } catch (e) {
+    reply = "Connexion impossible pour le moment. Vérifie ta connexion et réessaie.";
+    isError = true;
+  }
+  typing.remove();
+  sebAdd('assistant', reply, isError ? 'error' : '');
+  if (isError) { sebHistory.pop(); sebHistory.push({ role: 'user', text, error: true }); sebHistory.push({ role: 'assistant', text: reply, error: true }); }
+  else sebHistory.push({ role: 'assistant', text: reply });
+  sebSave();
+  sebBusy = false; document.getElementById('seb-send').disabled = false;
+  document.getElementById('seb-input').focus();
+}
+
+document.getElementById('seb-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const input = document.getElementById('seb-input');
+  const text = input.value; input.value = ''; input.style.height = '';
+  sebSend(text);
+});
+document.getElementById('seb-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); document.getElementById('seb-form').requestSubmit(); }
+});
+document.getElementById('seb-input').addEventListener('input', e => {
+  e.target.style.height = 'auto'; e.target.style.height = Math.min(e.target.scrollHeight, 110) + 'px';
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('seb-panel').classList.contains('open')) sebClose();
+});
+
+// TYPING EFFECT
+const lines = [
+  "const dev = 'Full-Stack Developer';",
+  "const erp = 'Odoo 19 Engineer';",
+  "const school = 'ESIH — 3ème année';",
+  "const startup = 'Co-fondateur Proaktif Consulting';",
+];
+let li = 0, ci = 0, deleting = false;
+const el = document.getElementById('typing');
+function type() {
+  const line = lines[li];
+  if (!deleting) {
+    el.textContent = line.slice(0, ci + 1) + '|';
+    ci++;
+    if (ci === line.length) { deleting = true; setTimeout(type, 1800); return; }
+  } else {
+    el.textContent = line.slice(0, ci - 1) + '|';
+    ci--;
+    if (ci === 0) { deleting = false; li = (li + 1) % lines.length; }
+  }
+  setTimeout(type, deleting ? 40 : 70);
+}
+type();
+
+// INTERACTIVE BACKGROUND — matrix particles + grid
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [], mouse = { x: -999, y: -999 };
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+// Grid dots
+const COLS = 30, ROWS = 20;
+function drawGrid() {
+  const cw = W / COLS, ch = H / ROWS;
+  for (let i = 0; i <= COLS; i++) {
+    for (let j = 0; j <= ROWS; j++) {
+      const x = i * cw, y = j * ch;
+      const dx = x - mouse.x, dy = y - mouse.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      const glow = Math.max(0, 1 - dist / 180);
+      const alpha = 0.08 + glow * 0.5;
+      const size = 1 + glow * 2.5;
+      ctx.beginPath();
+      ctx.arc(x, y, size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0, ${Math.round(180 + glow * 75)}, ${Math.round(220 + glow * 35)}, ${alpha})`;
+      ctx.fill();
+    }
+  }
+}
+
+// Floating particles
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.alpha = Math.random() * 0.4 + 0.05;
+    this.size = Math.random() * 1.5 + 0.5;
+    this.color = Math.random() > 0.7 ? '#00d4ff' : '#1a6080';
+  }
+  update() {
+    const dx = this.x - mouse.x, dy = this.y - mouse.y;
+    const dist = Math.sqrt(dx*dx + dy*dy);
+    if (dist < 120) {
+      this.vx += dx / dist * 0.15;
+      this.vy += dy / dist * 0.15;
+    }
+    this.vx *= 0.98; this.vy *= 0.98;
+    this.x += this.vx; this.y += this.vy;
+    if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.color.replace(')', `, ${this.alpha})`).replace('rgb', 'rgba').replace('#00d4ff', `rgba(0,212,255,${this.alpha})`).replace('#1a6080', `rgba(26,96,128,${this.alpha})`);
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+// Connect nearby particles
+function drawConnections() {
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 90) {
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(0, 212, 255, ${0.06 * (1 - dist/90)})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function animate() {
+  ctx.fillStyle = 'rgba(5, 13, 26, 0.15)';
+  ctx.fillRect(0, 0, W, H);
+  drawGrid();
+  drawConnections();
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <button class="toast-close" onclick="hideToast()" aria-label="Fermer">✕</button>
+  <div class="toast-title" id="toast-title"></div>
+  <div class="toast-msg" id="toast-msg"></div>
+</div>
+</body>
+</html>

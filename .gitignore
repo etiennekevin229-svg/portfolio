@@ -1,0 +1,6 @@
+# Clés API — ne jamais publier (elles vont dans les variables d'environnement Vercel)
+.env
+.env.*
+.vercel/
+__pycache__/
+*.pyc
