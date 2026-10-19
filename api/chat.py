@@ -95,8 +95,23 @@ class handler(BaseHTTPRequestHandler):
         return urlparse(origin).netloc.lower() == host or origin in EXTRA_ORIGINS
 
     def do_GET(self):
-        self._send(200, {"status": "ok", "assistant": "Sebastian",
-                         "providers": len(llm_router.available_providers())})
+        providers = llm_router.available_providers()
+        if "diag=1" not in (self.path or ""):
+            return self._send(200, {"status": "ok", "assistant": "Sebastian", "providers": len(providers)})
+
+        # Diagnostic : teste chaque modèle avec une question minuscule et renvoie
+        # « ok » ou le début du message d'erreur (jamais les clés). Limité par IP.
+        ip = (self.headers.get("x-forwarded-for") or self.client_address[0]).split(",")[0].strip()
+        if _rate_limited(ip):
+            return self._send(429, {"error": "rate"})
+        results = {}
+        for name, run in llm_router._CHAIN:
+            try:
+                text = run("Réponds seulement : OK", [], "Test", [], lambda n, a: "")
+                results[name] = "ok : " + text.strip()[:40]
+            except Exception as e:
+                results[name] = "erreur : " + (str(e).splitlines()[0][:220] if str(e) else type(e).__name__)
+        self._send(200, {"providers": providers, "diagnostic": results})
 
     def do_POST(self):
         if not self._origin_allowed():
