@@ -144,8 +144,21 @@ def _run_openai_compatible(client: OpenAI, model: str, system: str, history: lis
             kwargs["tools"] = tool_defs
         response = client.chat.completions.create(**kwargs)
         if isinstance(response, str):
-            # Le service a répondu autre chose que du JSON (message d'erreur en texte brut)
-            raise RuntimeError("réponse inattendue du service : " + response.strip()[:200])
+            # Certains services (GitHub Models) renvoient parfois la réponse sans l'en-tête
+            # JSON attendu : la librairie nous donne alors du texte brut.
+            raw = response.strip()
+            try:
+                data = json.loads(raw)
+            except ValueError:
+                data = None
+            if isinstance(data, dict) and data.get("choices"):
+                content = (data["choices"][0].get("message") or {}).get("content") or ""
+                if content.strip():
+                    return content
+                raise RuntimeError("réponse vide")
+            if raw and not tool_defs:
+                return raw  # texte brut = la réponse du modèle
+            raise RuntimeError("réponse inattendue du service : " + raw[:200])
         msg = response.choices[0].message
 
         if not msg.tool_calls:
