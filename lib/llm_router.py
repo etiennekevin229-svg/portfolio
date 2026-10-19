@@ -142,7 +142,11 @@ def _run_openai_compatible(client: OpenAI, model: str, system: str, history: lis
         kwargs = {"model": model, "messages": messages}
         if tool_defs:
             kwargs["tools"] = tool_defs
-        msg = client.chat.completions.create(**kwargs).choices[0].message
+        response = client.chat.completions.create(**kwargs)
+        if isinstance(response, str):
+            # Le service a répondu autre chose que du JSON (message d'erreur en texte brut)
+            raise RuntimeError("réponse inattendue du service : " + response.strip()[:200])
+        msg = response.choices[0].message
 
         if not msg.tool_calls:
             text = msg.content or ""
