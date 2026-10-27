@@ -1,6 +1,6 @@
 # Portfolio de Kevin Étienne + Sebastian
 
-Portfolio personnel de **Caïto Kevin Marley Étienne**, développeur full-stack junior et
+Portfolio personnel de **Caïto Kevin Marley Étienne**, développeur full-stack et
 ingénieur ERP (Odoo 19), co-fondateur de Proaktif Consulting à Port-au-Prince, Haïti.
 
 Le site intègre **Sebastian**, mon assistant IA, avec lequel les visiteurs peuvent discuter
